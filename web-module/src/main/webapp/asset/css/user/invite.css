@@ -1,0 +1,120 @@
+.border-shadow {
+  box-shadow: 0 10px 8px rgba(59, 62, 65, 0.32);
+  border-radius: 0 20px 20px 0;
+}
+.usercon .myinvite {
+  width: 1037px;
+  height: 201px;
+  background: #fff;
+  box-shadow: 0 10px 8px rgba(59, 62, 65, 0.32);
+  border-radius: 0 20px 20px 0;
+}
+.usercon .myinvite ul {
+  width: 1037px;
+  height: 121px;
+  float: left;
+}
+.usercon .myinvite ul li {
+  width: 33%;
+  float: left;
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  line-height: 120px;
+  border-width: 0 1px 0 0;
+  border-image: url('/Public/Images/border_r.png') 1;
+}
+.usercon .myinvite ul li:last-child {
+  border: none;
+}
+.usercon .myinvite ul li span {
+  font-size: 20px;
+  color: #ff6868;
+}
+.usercon .mylink {
+  width: 1037px;
+  height: 88px;
+  padding-top: 4px;
+  float: left;
+  margin-top: 6px;
+  background: #fff;
+  box-shadow: 0 10px 8px rgba(59, 62, 65, 0.32);
+  border-radius: 0 20px 20px 0;
+}
+.usercon .mylink .linkbox {
+  width: 650px;
+  height: 48px;
+  float: left;
+  margin-top: 16px;
+  line-height: 48px;
+  background: #ff6868;
+  border-radius: 5px;
+  padding: 0 10px;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.usercon .mylink a {
+  float: left;
+  margin-left: 10px;
+  margin-top: 16px;
+  display: block;
+  width: 111px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 3px 2px rgba(59, 62, 65, 0.32);
+  background: #ff6868;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.usercon .mylink a:hover {
+  background: #ff3535;
+}
+.usercon .mylist {
+  width: 1037px;
+  height: 457px;
+  margin-top: 6px;
+  float: left;
+  background: #fff;
+  overflow: auto;
+  box-shadow: 0 10px 8px rgba(59, 62, 65, 0.32);
+  border-radius: 0 20px 20px 0;
+}
+.usercon .mylist .rule {
+  float: right;
+  line-height: 80px;
+  color: #007eff;
+  font-size: 16px;
+  margin-right: 35px;
+}
+.usercon .mylist table {
+  width: 980px;
+  margin-left: 30px;
+}
+.usercon .mylist table tr {
+  border-bottom: 1px solid #e1e1e1;
+}
+.usercon .mylist table tr th {
+  font-size: 16px;
+  color: #ff6868;
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px solid #e1e1e1;
+}
+.usercon .mylist table tr td {
+  font-size: 16px;
+  color: #666;
+  line-height: 40px;
+  text-align: center;
+}

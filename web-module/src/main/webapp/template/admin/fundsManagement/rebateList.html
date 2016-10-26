@@ -1,0 +1,100 @@
+<!--description 设置首页的轮播图片-->
+<style>
+    .carsousel_frame{background: #fff; padding-bottom: 1em;}
+    .carsousel_frame .carsousel_header {border-bottom: 1px dotted rgba(0, 0, 0, 0.2); padding: 1em; margin-bottom: 1em; position: relative}
+    .carsousel_frame .carsousel_header span {margin-left: 1em;}
+    .carsousel_frame .carsousel_body {padding:0 14px;}
+    .carsousel_add_btn {margin-bottom:1em;position: absolute;right: 14px;bottom:-10px;}
+    .href_text {text-decoration: underline;cursor: pointer}
+</style>
+<div class="row">
+    <!-- page heading start-->
+    <div class="page-heading">
+        <h3>
+            第三方平台管理
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">第三方平台管理</a>
+            </li>
+            <li class="active"> 平台管理 </li>
+        </ul>
+        <div class="state-info">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly expense</span>
+                        <h3 class="red-txt">$ 45,600</h3>
+                    </div>
+                    <div id="income" class="chart-bar"></div>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly  income</span>
+                        <h3 class="green-txt">$ 45,600</h3>
+                    </div>
+                    <div id="expense" class="chart-bar"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- page heading end-->
+
+    <div class="row" ng-controller="fundManagementCtrl">
+
+        <div class="col-md-12">
+            <div class="carsousel_frame">
+                <div class="carsousel_inner">
+                    <div class="carsousel_header">
+                        <a href="#addRebate" class="btn btn-success pull-right carsousel_add_btn"><i class="fa fa-plus" style="margin-right: 0.5em;"></i>投资返利</a>
+                        <i class="fa fa-th-list"></i><span style="font-weight: 700">平台信息列表</span>
+                    </div>
+                    <!--<h4 style="float: right">设置</h4>-->
+                    <div class="carsousel_body">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>用户帐号</th>
+                                <th>投资平台</th>
+                                <th>投资标的</th>
+                                <th>投资金额</th>
+                                <th>平台加息返现</th>
+                                <th>投资时间</th>
+                                <th style="text-align: center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-if="platformList.length == 0">
+                                <td style="text-align: center;padding-top: 3em" colspan="8">
+                                    暂无数据<i class="fa fa-info-circle" style="margin-left: 1em;font-size: 14px;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>15017916946</td>
+                                <td>富金利金融</td>
+                                <td>3月份的标</td>
+                                <td>10000</td>
+                                <td>100</td>
+                                <td>2016-09-13</td>
+                                <td style="text-align: center">
+                                    <button class="btn btn-success">编辑</button>
+                                    <button class="btn btn-success" ng-click="removeItem($index,item)">删除</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

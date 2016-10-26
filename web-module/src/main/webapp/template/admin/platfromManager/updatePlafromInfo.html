@@ -1,0 +1,158 @@
+<!--description 设置首页的轮播图片-->
+<style>
+    .carsousel_frame{background: #fff; padding-bottom: 1em;}
+    .carsousel_frame .col-md-1 label {line-height: 34px}
+    .carsousel_frame .col-md-1 {padding-right: 0}
+    .carsousel_frame .carsousel_header {border-bottom: 1px dotted rgba(0, 0, 0, 0.2); padding: 1em; margin-bottom: 1em; position: relative}
+    .carsousel_frame .carsousel_header span {margin-left: 1em;}
+    .carsousel_frame .carsousel_body {padding:0 14px;}
+    .carsousel_frame .carsousel_body .input_text{height: 34px;border:1px #e5e5e5 solid;padding-left: 0.5em;width: 100%}
+    .carsousel_frame .carsousel_body .row {margin-bottom: 1em;}
+    .carsousel_add_btn {margin-bottom:1em;position: absolute;right: 14px;bottom:-10px;}
+    .href_text {text-decoration: underline;cursor: pointer}
+    .carsousel_frame .input_textarea { width: 100%; height: 200px; border: 1px solid #e5e5e5;resize: none }
+    .hidden_frame {display: none}
+    .input_select {width: 220px; height: 34px; line-height: 34px; background-color: #fff; border: 1px solid #ccc;}
+</style>
+
+<div class="row">
+    <!-- page heading start-->
+    <div class="page-heading">
+        <h3>
+            第三方平台管理
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">第三方平台管理</a>
+            </li>
+            <li class="active"> 修改平台信息 </li>
+        </ul>
+        <div class="state-info">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly expense</span>
+                        <h3 class="red-txt">$ 45,600</h3>
+                    </div>
+                    <div id="income" class="chart-bar"></div>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly  income</span>
+                        <h3 class="green-txt">$ 45,600</h3>
+                    </div>
+                    <div id="expense" class="chart-bar"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- page heading end-->
+
+    <div class="row" ng-controller="platfromCtrl">
+
+        <div class="col-md-12">
+            <div class="carsousel_frame">
+                <div class="carsousel_inner">
+                    <div class="carsousel_header">
+                        <!--<a href="#addCarouselImg" class="btn btn-success pull-right carsousel_add_btn"><i class="fa fa-plus" style="margin-right: 0.5em;"></i>添加图片</a>-->
+                        <i class="fa fa-th-list"></i><span style="font-weight: 700">修改平台信息</span>
+                    </div>
+                    <!--<h4 style="float: right">设置</h4>-->
+                    <div class="carsousel_body" style="padding-left: 2em">
+                        <!-- 隐藏域内容 -->
+                        <!-- ID -->
+                        <input type="text" ng-model="newPlatform.id" style="display: none" name="platformId"/>
+                        <div class="row">
+                            <div class="col-md-1"><label>平台LOGO:</label></div>
+                            <div class="col-md-4">
+
+                                <form action="/upload/imageList" id="uploadMultiFiles" method="post" enctype="multipart/form-data">
+                                    <input id="platform_logo_img" type="file" name="file" class="uploadFiles" />
+                                </form>
+                                <iframe name="hidden_frame" id="hidden_frame" class="hidden_frame"></iframe>
+                                <img src="" style="display: none;width: auto;height: 48px" id="logo_img"/>
+                            </div>
+                            <div class="col-md-1"><label>平台背景:</label></div>
+                            <div class="col-md-4">
+                                <select required name="topModule" class="input_select" style="width: 100%" ng-model="newPlatform.pBackground"
+                                        ng-options = "m.DDLCODE as m.DDLNAME for m in platformBackgroundList" ng-change="moduleSelectedChange(platform.pBackground)">
+                                    <option value="">== 请选择 ==</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label>平台名称:</label></div>
+                            <div class="col-md-4">
+                                <input class="input_text" ng-model="newPlatform.pName" type="text" placeholder="平台名称"/>
+                            </div>
+                            <div class="col-md-1"><label>公司名称：</label></div>
+                            <div class="col-md-4">
+                                <input type="text" ng-model="newPlatform.cName" class="input_text" placeholder="公司名称" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label>注册资金：</label></div>
+                            <div class="col-md-4">
+                                <input type="text" ng-model="newPlatform.registeredCapital" class="input_text" name="carsouel_img" placeholder="注册资金(元)" />
+                            </div>
+                            <div class="col-md-1"><label>公司地址:</label></div>
+                            <div class="col-md-4">
+                                <input class="input_text" ng-model="newPlatform.cAddress" type="text"  placeholder="公司地址"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label>联系电话：</label></div>
+                            <div class="col-md-4">
+                                <input type="text" class="input_text" ng-model="newPlatform.telPhone" placeholder="联系电话" />
+                            </div>
+                            <div class="col-md-1"><label>平台网址:</label></div>
+                            <div class="col-md-4">
+                                <input type="text" class="input_text" ng-model="newPlatform.urlAddress"  placeholder="平台网址"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label>法人代表：</label></div>
+                            <div class="col-md-4">
+                                <input type="text" ng-model="newPlatform.legalRepersentative" class="input_text" name="carsouel_img" placeholder="法人代表" />
+                            </div>
+                            <div class="col-md-1"><label>上线时间:</label></div>
+                            <div class="col-md-4">
+                                <input id="flatpickr-tryme" class="input_text flatpickr-input active" ng-model="newPlatform.uptime" type="text" readonly="readonly" placeholder="上线时间"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label> 平台介绍</label></div>
+                            <div class="col-md-9"><textarea class="input_textarea" ng-model="newPlatform.platformIntroduction"></textarea></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label> 风控情况</label></div>
+                            <div class="col-md-9"><textarea class="input_textarea" ng-model="newPlatform.windControlSituation"></textarea></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label>推荐理由</label></div>
+                            <div class="col-md-9"><textarea class="input_textarea" ng-model="newPlatform.recommendedReason"></textarea></div>
+                        </div>
+                        <div class="carsousel_footer">
+                            <div class="col-md-6 setting_footer_inner">
+                                <button class="btn btn-success" type="button" ng-click="updatePlaformInfo(newPlatform)"><i class="fa fa-check" style="margin-right: 0.5em;"></i>提交</button>
+                                <a class="btn btn-success" style="margin-left: 1em;" href="javascript:history.go(-1);"><i class="fa fa-mail-reply" style="margin-right: 0.5em;"></i>返回</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#flatpickr-tryme").flatpickr();
+        });
+    </script>
+</div>

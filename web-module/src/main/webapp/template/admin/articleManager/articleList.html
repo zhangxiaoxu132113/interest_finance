@@ -1,0 +1,102 @@
+<!--description 设置首页的轮播图片-->
+<style>
+    .carsousel_frame{background: #fff; padding-bottom: 1em;}
+    .carsousel_frame .carsousel_header {border-bottom: 1px dotted rgba(0, 0, 0, 0.2); padding: 1em; margin-bottom: 1em; position: relative}
+    .carsousel_frame .carsousel_header span {margin-left: 1em;}
+    .carsousel_frame .carsousel_body {padding:0 14px;}
+    .carsousel_add_btn {margin-bottom:1em;position: absolute;right: 14px;bottom:-10px;}
+    .href_text {text-decoration: underline;cursor: pointer}
+    .input_text{height: 34px;border:1px #e5e5e5 solid;padding-left: 0.5em;}
+    .input_select {width: 220px; height: 30px; line-height: 30px; background-color: #fff; border: 1px solid #ccc;}
+</style>
+<div class="row" ng-controller="articleCtrl">
+    <!-- page heading start-->
+    <div class="page-heading">
+        <h3>
+            文章管理
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">文章管理</a>
+            </li>
+            <li class="active"> 文章列表 </li>
+        </ul>
+        <div class="state-info">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly expense</span>
+                        <h3 class="red-txt">$ 45,600</h3>
+                    </div>
+                    <div id="income" class="chart-bar"></div>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly  income</span>
+                        <h3 class="green-txt">$ 45,600</h3>
+                    </div>
+                    <div id="expense" class="chart-bar"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- page heading end-->
+    <div class="row" style="margin-bottom: 1em;margin-left: 0.5em;">
+        <div class="col-md-12">
+            <span><label style="margin-right: 0.5em">标题</label><input type="text" class="input_text" ng-model="queryArticleTitle" /></span>
+            <label>所属栏目</label>
+            <select required name="topModule" class="input_select" ng-model="module_partent" ng-options = "m.AMID as m.MODULE_NAME for m in articleModuleList" ng-change="moduleSelectedQueryChange(module_partent)">
+                <option value="">== 请选择 ==</option>
+            </select >
+            <button class="btn btn-success" style="height: 28px;line-height: 14px;" ng-click="queryArticle()">查询</button>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="carsousel_frame">
+                <div class="carsousel_inner">
+                    <div class="carsousel_header">
+                        <a href="#addArticle" class="btn btn-success pull-right carsousel_add_btn"><i class="fa fa-plus" style="margin-right: 0.5em;"></i>添加文章</a>
+                        <i class="fa fa-th-list"></i><span style="font-weight: 700">文章列表</span>
+                    </div>
+                    <!--<h4 style="float: right">设置</h4>-->
+                    <div class="carsousel_body">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>文章标题</th>
+                                <th>所属栏目</th>
+                                <th>发布人</th>
+                                <th>添加时间</th>
+                                <th style="text-align: center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in articles">
+                                <td style="width: 10%"><span ng-bind="$index+1"></span></td>
+                                <td style="width: 40%"><span ng-bind="item.TITLE"></span></td>
+                                <td style="width: 10%"><span ng-bind="item.MODULE_NAME"></span></td>
+                                <td style="width: 10%"><span ng-bind="item.author"></span></td>
+                                <td style="width: 15%"><span ng-bind="item.CREATEDON | date:'yyyy-MM-dd HH:mm:ss'"></span></td>
+                                <td style="text-align: center">
+                                    <button class="btn btn-success" ng-click="redirect2UpdatePage($index,item)">编辑</button>
+                                    <button class="btn btn-success" ng-click="removeItem($index,item)">删除</button>
+                                </td>
+                            </tr>
+                            <tr ng-if="articles.length == 0"  style="text-align: center">
+                                <td colspan="6">没有数据!</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,157 @@
+<!--description 设置首页的轮播图片-->
+<style>
+    .carsousel_frame{background: #fff; padding-bottom: 1em;}
+    .carsousel_frame .col-md-1 label {line-height: 34px}
+    .carsousel_frame .col-md-1 {padding-right: 0}
+    .carsousel_frame .carsousel_header {border-bottom: 1px dotted rgba(0, 0, 0, 0.2); padding: 1em; margin-bottom: 1em; position: relative}
+    .carsousel_frame .carsousel_header span {margin-left: 1em;}
+    .carsousel_frame .carsousel_body {padding:0 14px;}
+    .carsousel_frame .carsousel_body .input_text{height: 34px;border:1px #e5e5e5 solid;padding-left: 0.5em;width: 100%}
+    .carsousel_frame .carsousel_body .row {margin-bottom: 1em;}
+    .carsousel_add_btn {margin-bottom:1em;position: absolute;right: 14px;bottom:-10px;}
+    .href_text {text-decoration: underline;cursor: pointer}
+    .carsousel_frame .input_textarea { width: 100%; height: 200px; border: 1px solid #e5e5e5;resize: none }
+    .hidden_frame {display: none}
+
+    .input_select {width: 220px; height: 34px; line-height: 34px; background-color: #fff; border: 1px solid #e5e5e5;}
+</style>
+
+<div class="row">
+    <!-- page heading start-->
+    <div class="page-heading">
+        <h3>
+            权限管理
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">权限管理</a>
+            </li>
+            <li class="active"> 添加用户信息 </li>
+        </ul>
+        <div class="state-info">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly expense</span>
+                        <h3 class="red-txt">$ 45,600</h3>
+                    </div>
+                    <div id="income" class="chart-bar"></div>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly  income</span>
+                        <h3 class="green-txt">$ 45,600</h3>
+                    </div>
+                    <div id="expense" class="chart-bar"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- page heading end-->
+
+    <div class="row" ng-controller="userListCtrl">
+
+        <div class="col-md-12">
+            <div class="carsousel_frame">
+                <div class="carsousel_inner">
+                    <div class="carsousel_header">
+                        <!--<a href="#addCarouselImg" class="btn btn-success pull-right carsousel_add_btn"><i class="fa fa-plus" style="margin-right: 0.5em;"></i>添加图片</a>-->
+                        <i class="fa fa-th-list"></i><span style="font-weight: 700">添加用户信息</span>
+                    </div>
+                    <!--<h4 style="float: right">设置</h4>-->
+                    <div class="carsousel_body" style="padding-left: 2em">
+                        <div class="row">
+                            <div class="col-md-1"><label>登录名:</label></div>
+                            <div class="col-md-4">
+
+                                <input class="input_text" ng-model="empInfo.userName" type="text" placeholder="登录名">
+                            </div>
+                            <div class="col-md-1"><label>登录密码：</label></div>
+                            <div class="col-md-4">
+                                <input type="password" ng-model="empInfo.password" class="input_text" name="carsouel_img" placeholder="登录密码" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label>用户姓名：</label></div>
+                            <div class="col-md-4">
+                                <input type="text" ng-model="empInfo.employeeName" class="input_text" name="carsouel_img" placeholder="用户姓名" />
+                            </div>
+                            <div class="col-md-1"><label>所属部门:</label></div>
+                            <div class="col-md-4">
+                                <select required name="topModule" class="input_select" style="width: 100%" ng-model="empInfo.departmentId" ng-options = "m.DEPARTMEN_ID as m.DEPARTMEN_NAME for m in departmentList" ng-change="moduleSelectedChange(empInfo.departmentId)">
+                                    <option value="">== 请选择 ==</option>
+                                </select >
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label>性别：</label></div>
+                            <div class="col-md-4">
+                                <select required name="topModule" class="input_select" style="width: 100%" ng-model="empInfo.gender" ng-options = "m.DDLCODE as m.DDLNAME for m in genderList" ng-change="moduleSelectedChange(empInfo.gender)">
+                                    <option value="">== 请选择 ==</option>
+                                </select >
+                            </div>
+                            <div class="col-md-1"><label>生日：</label></div>
+                            <div class="col-md-4">
+                                <input id="flatpickr-tryme" class="input_text flatpickr-input active" ng-model="empInfo.brithday" type="text" readonly="readonly" placeholder="生日"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label>政治面貌：</label></div>
+                            <div class="col-md-4">
+                                <select required name="topModule" class="input_select" style="width: 100%" ng-model="empInfo.politicsStatus" ng-options = "m.DDLCODE as m.DDLNAME for m in politics" ng-change="moduleSelectedChange(empInfo.politicsStatus)">
+                                    <option value="">== 请选择 ==</option>
+                                </select >
+                            </div>
+                            <div class="col-md-1"><label>婚姻状态:</label></div>
+                            <div class="col-md-4">
+                                <select required name="topModule" class="input_select" style="width: 100%" ng-model="empInfo.marriage" ng-options = "m.DDLCODE as m.DDLNAME for m in marriages" ng-change="moduleSelectedChange(empInfo.marriage)">
+                                    <option value="">== 请选择 ==</option>
+                                </select >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label>家庭地址：</label></div>
+                            <div class="col-md-4">
+                                <input type="text" ng-model="empInfo.address" class="input_text" name="carsouel_img" placeholder="家庭地址" />
+                            </div>
+                            <div class="col-md-1"><label>电子邮件:</label></div>
+                            <div class="col-md-4">
+                                <input class="input_text" ng-model="empInfo.email" type="text" placeholder="电子邮件"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"><label>手机号码：</label></div>
+                            <div class="col-md-4">
+                                <input type="text" ng-model="empInfo.phone" class="input_text" name="carsouel_img" placeholder="手机号码" />
+                            </div>
+                            <div class="col-md-1"><label>职位:</label></div>
+                            <div class="col-md-4">
+                                <select required name="topModule" class="input_select" style="width: 100%" ng-model="empInfo.job" ng-options = "m.DDLCODE as m.DDLNAME for m in jobName" ng-change="moduleSelectedChange(empInfo.job)">
+                                    <option value="">== 请选择 ==</option>
+                                </select >
+                            </div>
+                        </div>
+
+                        <div class="carsousel_footer">
+                            <div class="col-md-6 setting_footer_inner">
+                                <button class="btn btn-success" type="button" ng-click="addEmpInfo(empInfo)"><i class="fa fa-check" style="margin-right: 0.5em;"></i>提交</button>
+                                <a class="btn btn-success" style="margin-left: 1em;" href="javascript:history.go(-1);"><i class="fa fa-mail-reply" style="margin-right: 0.5em;"></i>返回</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#flatpickr-tryme").flatpickr();
+        });
+    </script>
+</div>

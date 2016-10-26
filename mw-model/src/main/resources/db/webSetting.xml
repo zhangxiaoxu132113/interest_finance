@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 网站设置内容 -->
+<web-setting>
+    <!-- 网站描述 -->
+    <web-description></web-description>
+    <!-- 网站关键字 -->
+    <web-keys>
+        <web-key></web-key>
+        <web-key></web-key>
+        <web-key></web-key>
+    </web-keys>
+    <!-- 网站标题 -->
+    <web-title>
+
+    </web-title>
+</web-setting>

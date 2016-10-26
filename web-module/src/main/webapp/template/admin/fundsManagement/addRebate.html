@@ -1,0 +1,122 @@
+<!--description 设置首页的轮播图片-->
+<style>
+    .carsousel_frame{background: #fff; padding-bottom: 1em;}
+    .carsousel_frame .carsousel_header {border-bottom: 1px dotted rgba(0, 0, 0, 0.2); padding: 1em; margin-bottom: 1em; position: relative}
+    .carsousel_frame .carsousel_header span {margin-left: 1em;}
+    .carsousel_frame .carsousel_body {padding:0 14px;}
+    .carsousel_frame .carsousel_body .input_text{height: 34px;border:1px #e5e5e5 solid;padding-left: 0.5em;}
+    .carsousel_frame .carsousel_body .row {margin-bottom: 1em;}
+    .success_info{ display: none;  margin-left: 1.5em;  font-size: 16px;  font-weight: 600;  color: green; }
+    .fail_info { display: none;  margin-left: 1.5em;  font-size: 16px;  font-weight: 600;  color: red; }
+    .select_info{ width: 220px;  height: 34px;  line-height: 34px;  background-color: #fff; border: 1px solid #e5e5e5;}
+    .select2-container--default .select2-selection--single {border:1px solid #e5e5e5!important;}
+    .select2-container .select2-selection--single {height: 34px!important;}
+</style>
+<div class="row">
+    <!-- page heading start-->
+    <div class="page-heading">
+        <h3>
+            资金管理
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">资金管理</a>
+            </li>
+            <li class="active"> 投资返利 </li>
+        </ul>
+        <div class="state-info">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly expense</span>
+                        <h3 class="red-txt">$ 45,600</h3>
+                    </div>
+                    <div id="income" class="chart-bar"></div>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly  income</span>
+                        <h3 class="green-txt">$ 45,600</h3>
+                    </div>
+                    <div id="expense" class="chart-bar"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- page heading end-->
+
+    <div class="row" ng-controller="fundManagementCtrl">
+
+        <div class="col-md-12">
+            <div class="carsousel_frame">
+                <div class="carsousel_inner">
+                    <div class="carsousel_header">
+                        <!--<a href="#addCarouselImg" class="btn btn-success pull-right carsousel_add_btn"><i class="fa fa-plus" style="margin-right: 0.5em;"></i>添加图片</a>-->
+                        <i class="fa fa-th-list"></i><span style="font-weight: 700">投资返利</span>
+                    </div>
+                    <!--<h4 style="float: right">设置</h4>-->
+                    <div class="carsousel_body">
+                        <!-- 手机号码 -->
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>手机号码:</label></div>
+                            <div class="col-md-9">
+                                <select required name="topModule" class="select_info js-example-basic-single" ng-model="rebateInfo.userId"
+                                        ng-options = "m.USERID as m.USERNAME for m in userTelphoneList">
+                                    <option value="">== 请输入 ==</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- 投的标 -->
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>投资标的：</label></div>
+                            <div class="col-md-9">
+                                <select required name="topModule" class="select_info js-example-basic-single" ng-model="rebateInfo.bidId"
+                                        ng-options = "m.ID as m.NAME for m in bidList" ng-change="bidSelectChanges(rebateInfo.bidId)">
+                                    <option value="">== 请选择 ==</option>
+                                </select>
+                                <span ng-if="platformName != ''">
+                                    <span>所属平台:</span>
+                                    <span>{{platformName}}</span>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- 投资的资金 -->
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>投资资金:</label></div>
+                            <div class="col-md-9">
+                                <input class="input_text" id="inv_amount" ng-model="rebateInfo.investmentAmount" type="text" style="width: 220px;" placeholder="投资资金"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>应返现金额:</label></div>
+                            <div class="col-md-9">
+                                <input class="input_text" ng-model="rebateInfo.platformReveue" type="text" style="width: 220px;" placeholder="应返现金额"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>平台返现金额:</label></div>
+                            <div class="col-md-9">
+                                <input class="input_text" ng-model="rebateInfo.selfPlatformReveue" type="text" style="width: 220px;" placeholder="应返现金额"/>
+                            </div>
+                        </div>
+                        <div class="carsousel_footer">
+                            <div class="col-md-push-2 col-md-6 setting_footer_inner">
+                                <button class="btn btn-success" type="button" ng-click="addRebate(rebateInfo)"><i class="fa fa-check" style="margin-right: 0.5em;"></i>提交</button>
+                                <span class="success_info">保存成功！</span>
+                                <span class="fail_info">保存失败！</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

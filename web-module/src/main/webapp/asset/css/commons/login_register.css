@@ -1,0 +1,4 @@
+.loginwrap ul li {position: relative}
+.error_info {color: red;display: none }
+#hidden_form{display: none}
+/*position: absolute;right: -100px;top:13px;*/

@@ -1,0 +1,328 @@
+<!--description 设置首页的轮播图片-->
+<style>
+    .carsousel_frame{background: #fff; padding-bottom: 1em;}
+    .carsousel_frame .carsousel_header {border-bottom: 1px dotted rgba(0, 0, 0, 0.2); padding: 1em; margin-bottom: 1em; position: relative}
+    .carsousel_frame .carsousel_header span {margin-left: 1em;}
+    .carsousel_frame .carsousel_body {padding:0 14px;}
+    .carsousel_frame .carsousel_body .input_text{height: 34px;border:1px #e5e5e5 solid;padding-left: 0.5em;}
+    .carsousel_frame .carsousel_body .row {margin-bottom: 1em;}
+    .success_info{ display: none;  margin-left: 1.5em;  font-size: 16px;  font-weight: 600;  color: green; }
+    .fail_info { display: none;  margin-left: 1.5em;  font-size: 16px;  font-weight: 600;  color: red; }
+    .select_info{ width: 220px;  height: 34px;  line-height: 34px;  background-color: #fff; border: 1px solid #e5e5e5;}
+    .select2-container--default .select2-selection--single {border:1px solid #e5e5e5!important;}
+    .select2-container .select2-selection--single {height: 34px!important;}
+    .bg-mask{
+        z-index: 1000;position: fixed;top: 0;right: 0;left: 0;bottom:0; background: black;
+        width:100%; height:100%;background:rgba(0,0,0,0.6); filter:Alpha(opacity=60);
+        display: none;
+    }
+    .bg-mask .bg-mask-container .mask-frame {
+        width: 360px; height: 350px;
+        background: #FFF;
+        top: 50%; left: 50%;
+        margin-top: -200px;
+        margin-left: -180px;
+        position: absolute;
+        border-radius: 4px;
+        border: 1px solid #f1f1f1;
+        box-shadow: 0 6px 6px rgba(59, 62, 65, 0.32);
+        z-index: 10001;
+    }
+    .close-btn ,.closeAddParamNameFrame-btn, .closeManageParamNameFrame-btn{
+        position: absolute;
+        right: 0.5em;
+        top: 0.5em;
+        display: block;
+        border: 1px solid #666666;
+        border-radius: 50%;
+        width: 28px;
+        height: 29px;
+        text-align: center;
+        padding-top: 3px;
+        cursor: pointer;
+    }
+    a.close-btn :link ,a.closeAddParamNameFrame-btn :link, a.closeManageParamNameFrame-btn :link {color: #0f0f0f}
+    a.close-btn :hover,a.closeAddParamNameFrame-btn :hover, a.closeManageParamNameFrame-btn :hover{color: #b70000;!important; }
+
+    a.showChangeParamsFrame :link, a.closeManageParamNameFrame-btn :link{color: #0f0f0f!important;}
+    a.showChangeParamsFrame :hover, a.closeManageParamNameFrame-btn :hover{color: seagreen;!important; cursor: pointer}
+
+    .json-textarea {
+        width: 100%; height: 150px;
+        background: rgba(102, 102, 102, 0.22);
+        margin-top: 10px; padding:1em;
+        overflow: auto;
+    }
+</style>
+<div class="row">
+    <!-- page heading start-->
+    <div class="page-heading">
+        <h3>
+            第三方平台管理
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">第三方平台管理</a>
+            </li>
+            <li class="active"> 平台接口管理 </li>
+        </ul>
+        <div class="state-info">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly expense</span>
+                        <h3 class="red-txt">$ 45,600</h3>
+                    </div>
+                    <div id="income" class="chart-bar"></div>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly  income</span>
+                        <h3 class="green-txt">$ 45,600</h3>
+                    </div>
+                    <div id="expense" class="chart-bar"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- page heading end-->
+
+    <div class="row" ng-controller="apiManagementCtrl">
+
+        <div class="col-md-12">
+            <div class="carsousel_frame">
+                <div class="carsousel_inner">
+                    <div class="carsousel_header">
+                        <!--<a href="#addCarouselImg" class="btn btn-success pull-right carsousel_add_btn"><i class="fa fa-plus" style="margin-right: 0.5em;"></i>添加图片</a>-->
+                        <i class="fa fa-th-list"></i><span style="font-weight: 700">添加平台接口数据</span>
+                    </div>
+                    <!--<h4 style="float: right">设置</h4>-->
+                    <div class="carsousel_body">
+                        <!-- 手机号码 -->
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>第三方平台:</label></div>
+                            <div class="col-md-9">
+                                <select required name="topModule" class="select_info js-example-basic-single" ng-model="platformApi.platformId"
+                                        ng-options = "m.ID as m.P_NAME for m in platformList">
+                                    <option value="">== 请输入 ==</option>
+                                </select>
+                                <i style="color:red">*</i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>接口标识:</label></div>
+                            <div class="col-md-9">
+                                <select required name="topModule" class="select_info js-example-basic-single" ng-model="platformApi.apiFlag"
+                                        ng-options = "m.DDLCODE as m.DDLNAME for m in apiType" >
+                                    <option value="">== 请选择 ==</option>
+                                </select>
+                                <i style="color:red">*</i>
+                            </div>
+                        </div>
+                        <!-- 接口地址 -->
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>接口地址：</label></div>
+                            <div class="col-md-9">
+                                <input class="input_text" id="inv_amount" ng-model="platformApi.url" type="text" style="width: 220px;" placeholder="接口地址"/>
+                                <i style="color:red">*</i>
+                            </div>
+                        </div>
+                        <!-- 投资的资金 -->
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>请求参数:</label></div>
+                            <div class="col-md-2">
+                                <!--<select required name="topModule" class="select_info js-example-basic-single" ng-model="rebateInfo.bidId"-->
+                                        <!--ng-options = "m.ID as m.NAME for m in bidList" ng-change="bidSelectChanges(rebateInfo.bidId)">-->
+                                    <!--<option value="">== 请选择 ==</option>-->
+                                <!--</select>-->
+                                <a class="showChangeParamsFrame" style="color: #7a7676!important;">
+                                    <label>
+                                        <span>添加参数<i class="fa fa-plus-square-o" style="margin-left: 5px;font-size: 14px;"></i></span>
+                                    </label>
+                                </a>
+                                <!-- 添加请求参数-输入框 -->
+                                <div class="bg-mask">
+                                    <div class="bg-mask-container" style="position: relative; width: 100%;height: 100%;">
+                                        <!-- 添加新的参数的文本输入框 -->
+                                        <div class="mask-frame" id="mask-frame-id">
+                                            <div class="mask-content" style="position: relative;padding:1em;">
+                                                <!-- 关闭按钮 -->
+                                                <a class="close-btn" style="color: #7a7676!important;">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                                <h5 style="font-size: 18px;font-weight: bold;margin-top:5px;margin-bottom:20px;">
+                                                    <i class="fa fa-stack-exchange" style="margin-right: 0.5em"></i>添加请求参数
+                                                </h5>
+                                                <select id="select_api_params" required class="select_info js-example-basic-single">
+                                                    <!--ng-model="param_select"-->
+                                                    <!--ng-options = "m.name as m.description for m in apiParamList"-->
+                                                    <option value="">== 请选择 ==</option>
+                                                    <option ng-repeat="item in apiParamList" value="{{item.name}}">{{item.description}}</option>
+                                                </select>
+                                                <a style="cursor: pointer" id="addParamBtn">添加参数</a>
+                                                <a style="cursor: pointer" id="manageParamBtn">管理</a>
+                                                <br/>
+                                                <input type="text" style="width: 220px;margin-top:0.5em;" id="p_param_name" class="input_text">
+                                                <button class="btn btn-success" style="padding:4px 12px" ng-click="addParams()">添加</button>
+                                                <!-- json格式显示的区域 -->
+                                                <div class="json-textarea">
+                                                    <span class="json-textarea-content"></span>
+                                                </div>
+                                                <div style="margin-top:10px;text-align: center">
+                                                    <button class="btn btn-success" id="finish_add_params" ng-click="finishAddParams()">完成</button>
+                                                    <button class="btn btn-danger" id="giveup_params" ng-click="giveupParamSet()">放弃</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 添加参数的文本输入框 -->
+                                        <div class="mask-frame" style="display: none;z-index:10002;padding:1em;" id="addParamName">
+                                            <div id="addParamNameContent" style="position: relative">
+                                                <a class="closeAddParamNameFrame-btn" style="color: #7a7676!important;">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                                <h5 style="font-size: 18px;font-weight: bold;margin-top:5px;margin-bottom:20px;">
+                                                    <i class="fa fa-stack-exchange" style="margin-right: 0.5em"></i>添加请求参数类别
+                                                </h5>
+                                                <h5>请求参数英文标识</h5>
+                                                <input type="text" style="width: 100%" name="param-en-flag" id="param-en-flag-id">
+
+                                                <h5>请求参数中文标识</h5>
+                                                <input type="text" style="width: 100%" name="param-cn-flag" id="param-cn-flag-id">
+
+                                                <div style="margin-top:10px;text-align: center">
+                                                    <button class="btn btn-success" id="finish_add_params_flag" ng-click="finishAddParamFlag()">完成</button>
+                                                    <button class="btn btn-danger" id="giveup_params_flag">放弃</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- 管理的文本输入框 -->
+                                        <div class="mask-frame" style="display: none;z-index: 10002;padding:1em;" id="manageParamName">
+                                            <div id="managerParamNameContent">
+                                                <a class="closeManageParamNameFrame-btn" style="color: #7a7676!important;">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                                <h5 style="font-size: 18px;font-weight: bold;margin-top:5px;margin-bottom:20px;">
+                                                    <i class="fa fa-stack-exchange" style="margin-right: 0.5em"></i>请求参数管理
+                                                </h5>
+                                                <div>
+                                                    <table class="table table-hover table-striped">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>参数名</th>
+                                                            <th>描述</th>
+                                                            <th>操作</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr ng-repeat="item in apiParamList">
+                                                            <td >{{item.name}}</td>
+                                                            <td >{{item.description}}</td>
+                                                            <td ><button class="btn btn-warn" ng-click="removeItem(item)">删除</button></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7"><!-- 添加后的参数json格式 -->
+                                <div class="json-show-content"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>邀请码:</label></div>
+                            <div class="col-md-9">
+                                <input class="input_text" ng-model="platformApi.appKey" type="text" style="width: 220px;" placeholder="邀请码"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>功能描述:</label></div>
+                            <div class="col-md-9">
+                                <textarea style="width: 420px;height: 200px;border:1px #e5e5e5 solid;" ng-model="platformApi.description">
+
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="carsousel_footer">
+                            <div class="col-md-push-2 col-md-6 setting_footer_inner">
+                                <button class="btn btn-success" type="button" ng-click="addPlatformApi(platformApi)"><i class="fa fa-check" style="margin-right: 0.5em;"></i>提交</button>
+                                <span class="success_info">保存成功！</span>
+                                <span class="fail_info">保存失败！</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+        $(document).ready(function(){
+            /**关闭遮罩层的按钮点击事件*/
+            $('.close-btn').click(function(){
+                $(".bg-mask").css("display","none");
+                $("#addParamName").css("display","none");
+                $("#manageParamName").css("display","none");
+                $('#mask-frame-id').removeClass('animated zoomIn');
+                $('#addParamName').removeClass('animated flipOutX');
+                $('#manageParamName').removeClass('animated flipOutX');
+            });
+
+            /**显示遮罩层的按钮点击事件*/
+            $(".showChangeParamsFrame").click(function() {
+                $(".bg-mask").css("display","block");
+                $('#mask-frame-id').addClass('animated zoomIn');
+            });
+            $('#addParamBtn').click(function(){
+                $('#addParamName').css('display','block');
+                $('#addParamName').removeClass('animated flipOutX');
+                $('#addParamName').addClass('animated flipInX');
+            });
+
+
+            /**添加参数属性的相关操作*/
+            $(".closeAddParamNameFrame-btn").click(function(){
+                $('#addParamName').removeClass('animated flipInX');
+                $('#addParamName').addClass('animated flipOutX',function(){
+                    $(".addParamName").css("display","none");
+                });
+
+            });
+
+            $("#giveup_params_flag").click(function(){
+                $('#addParamName').removeClass('animated flipInX');
+                $('#addParamName').addClass('animated flipOutX',function(){
+                    $(".addParamName").css("display","none");
+                    //清空输入框的内容
+                    $("#param-en-flag-id").val("");
+                    $("#param-cn-flag-id").val("");
+                });
+            });
+
+            /**管理参数的相关操作*/
+            $('#manageParamBtn').click(function(){
+                $('#manageParamName').css('display','block');
+                $('#manageParamName').removeClass('animated flipOutX');
+                $('#manageParamName').addClass('animated flipInX');
+            });
+
+            $(".closeManageParamNameFrame-btn").click(function(){
+                $('#manageParamName').removeClass('animated flipInX');
+                $('#manageParamName').addClass('animated flipOutX',function(){
+                    $(".manageParamName").css("display","none");
+                });
+            });
+        });
+    </script>
+</div>

@@ -1,0 +1,62 @@
+.border-shadow {
+  box-shadow: 0 10px 8px rgba(59, 62, 65, 0.32);
+  border-radius: 0 20px 20px 0;
+}
+.usercon .cash {
+  width: 1037px;
+  height: 359px;
+  background: #fff;
+  box-shadow: 0 10px 8px rgba(59, 62, 65, 0.32);
+  border-radius: 0 20px 20px 0;
+}
+.usercon .cash .rule {
+  float: right;
+  line-height: 80px;
+  color: #007eff;
+  font-size: 16px;
+  margin-right: 35px;
+}
+.usercon .cash .list {
+  float: left;
+  width: 1037px;
+  padding-left: 70px;
+}
+.usercon .cash .list li {
+  width: 246px;
+  height: 106px;
+  float: left;
+  margin: 10px 30px;
+  padding: 20px 0 0 28px;
+  color: #fff;
+  background: url('../../img/cash.png') no-repeat;
+}
+.usercon .cash .list li .time {
+  line-height: 30px;
+  font-size: 12px;
+}
+.usercon .rate {
+  width: 1037px;
+  height: 387px;
+  margin-top: 12px;
+  background: #fff;
+  box-shadow: 0 10px 8px rgba(59, 62, 65, 0.32);
+  border-radius: 0 20px 20px 0;
+}
+.usercon .rate .list {
+  float: left;
+  width: 1037px;
+  padding-left: 70px;
+}
+.usercon .rate .list li {
+  width: 246px;
+  height: 106px;
+  float: left;
+  margin: 10px 30px;
+  padding: 20px 0 0 28px;
+  color: #fff;
+  background: url('../../img/rate.png') no-repeat;
+}
+.usercon .rate .list li .time {
+  line-height: 30px;
+  font-size: 12px;
+}

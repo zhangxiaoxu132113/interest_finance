@@ -1,0 +1,143 @@
+<!-- usercontent-->
+<div class="usercon">
+    <div class="safe">
+        <div class="itemtitle"><span>账户安全</span></div>
+        <input type="hidden" name="userId" id="userId_value" value="14"><!--暂时性设置-->
+        <ul class="info">
+            <li class="password">
+                <!-- 已认证-->
+                <div class="data">
+                    <i class="pw"></i>
+                    <div class="box">
+                        <label>登录密码</label>
+                        <em></em>
+                        <a class="change" href="javascript:void(0);">修改</a>
+                    </div>
+                </div>
+                <!-- 修改-->
+                <form action="" name="passForm" id="passForm">
+                <div class="reset" style="display:none;">
+                    <i class="pw"></i>
+                    <h2 class="title">登录密码</h2>
+                    <ul>
+                        <li><label>当前密码：</label><input type="password" name="oldPass" id="oldPass" placeholder="请输入当前登录密码"></li>
+                        <li><label>新密码：</label><input type="password" name="newPass" id="newPass" placeholder="请输入新登录密码"></li>
+                        <li><label>确认新密码：</label><input type="password" name="newPass2" id="newPass2" placeholder="请再次输入新登录密码">
+                            <a id="pwd_submit">保存</a></li>
+                    </ul>
+                    <em class="close"></em>
+                </div>
+                </form>
+            </li>
+            <li class="payword">
+                <div class="data">
+                    <i class="pay"></i>
+                    <div class="box">
+                        <label>交易密码</label>
+                        <!-- 已设置-->
+                        <em></em>
+                        <a class="change" href="javascript:void(0);">修改</a>
+                        <!-- 未设置-->
+                        <!--<a class="set" href="javascript:void(0);">设置密码</a>-->
+                    </div>
+                </div>
+                <!-- 修改-->
+                <form action="" name="payPassForm" id="payPassForm">
+                <div class="reset" style="display:none;">
+                    <i class="pay"></i>
+                    <h2 class="title">交易密码</h2>
+                    <ul>
+                        <li><label>当前密码：</label><input type="password" name="oldPayPass" id="oldPayPass" placeholder="请输入当前支付密码"></li>
+                        <li><label>新密码：</label><input type="password" name="newPayPass" id="newPayPass" placeholder="请输入新支付密码"></li>
+                        <li><label>确认新密码：</label><input type="password" name="newPayPass2" id="newPayPass2" placeholder="请再次输入新支付密码">
+                            <a href="javascript:void(0);" id="payPwd_submit">保存</a></li>
+                    </ul>
+                    <em class="close"></em>
+                </div>
+                </form>
+            </li>
+            <li class="card">
+                <div class="data">
+                    <i class="cd"></i>
+                    <div class="box">
+                        <label>银行卡号</label>
+                        <!-- 已设置-->
+                        <!--<em></em>-->
+                        <!-- 未设置-->
+                        <a class="set" href="javascript:void(0);">绑定银行卡</a>
+                    </div>
+                </div>
+                <!-- 修改-->
+                <div class="reset" style="display:none;">
+                    <i class="cd"></i>
+                    <h2 class="title">银行卡号</h2>
+                    <ul class="left">
+                        <li><label>姓名：</label><input type="text" name="nameForCar" id="nameForCar" placeholder="请输入名字"></li>
+                        <li><label>身份证号码：</label><input type="text" name="personId" id="personId" maxlength="18" placeholder="请输入身份证号码"></li>
+                        <li><label>开户银行：</label><input type="text" name="bankName" id="bankName" placeholder="请输入开户行名称"></li>
+                        <li><label>银行卡号：</label><input type="text" name="carNo" id="carNo" placeholder="请输入银行卡号"></li>
+                        <li><label>姓名：</label><input type="text" class="safe_username"></li>
+                        <li><label>身份证号码：</label><input type="text" class="safe_cardId"></li>
+                        <li><label>开户银行：</label><input type="text" class="safe_bankName"></li>
+                        <li><label>银行卡号：</label><input type="text" class="card_num"></li>
+                    </ul>
+                    <ul class="right">
+                        <li><label>银行预留手机号：</label><input type="text" name="tellOfCar" id="tellOfCar" maxlength="11" placeholder="请输入预留手机号"></li>
+                        <li class="code"><label>短信验证码：</label><input type="text" name="messageCode" id="messageCode" placeholder="请输入短信验证码"><button>发送验证码</button></li>
+                        <li><a href="javascript:void(0);">绑定</a></li>
+                        <li><label>银行预留手机号：</label><input type="text" class="safe_tel_phone"></li>
+                        <li class="code"><label>短信验证码：</label><input type="text"><button>发送验证码</button></li>
+                        <li><a href="javascript:void(0);" class="bindBtn">绑定</a></li>
+                    </ul>
+                    <em class="close"></em>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="/asset/js/mw/personhome/safe.js"></script>
+<script>
+    //    登录密码
+    $('.password .change').click(function(){
+        $('.password .data').slideUp(200,function(){
+            $('.password .reset').slideDown();
+        });
+        $('.password').siblings().children('.reset').slideUp();
+        $('.password').siblings().children('.data').slideDown();
+    });
+    $('.password .close').click(function(){
+        $('.password .reset').slideUp(300,function(){
+            $('.password .data').slideDown(200);
+        });
+    });
+    //    交易密码
+    $('.payword .change').click(function(){
+        $('.payword .data').slideUp(200,function(){
+            $('.payword .reset').slideDown();
+        });
+        $('.payword').siblings().children('.reset').slideUp();
+        $('.payword').siblings().children('.data').slideDown();
+    });
+    $('.payword .close').click(function(){
+        $('.payword .reset').slideUp(300,function(){
+            $('.payword .data').slideDown(200);
+        });
+    });
+    //     银行卡
+    $('.card .set').click(function(){
+        $('.card .data').slideUp(200,function(){
+            $('.card .reset').slideDown();
+        });
+        $('.card').siblings().children('.reset').slideUp();
+        $('.card').siblings().children('.data').slideDown();
+    });
+    $('.card .close').click(function(){
+        $('.card .reset').slideUp(300,function(){
+            $('.card .data').slideDown(200);
+        });
+    });
+
+
+
+
+</script>

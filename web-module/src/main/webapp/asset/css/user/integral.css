@@ -1,0 +1,120 @@
+.border-shadow {
+  box-shadow: 0 10px 8px rgba(59, 62, 65, 0.32);
+  border-radius: 0 20px 20px 0;
+}
+.usercon .integral {
+  width: 1037px;
+  height: 201px;
+  background: #fff;
+  box-shadow: 0 10px 8px rgba(59, 62, 65, 0.32);
+  border-radius: 0 20px 20px 0;
+}
+.usercon .integral ul {
+  width: 1037px;
+  height: 121px;
+  float: left;
+}
+.usercon .integral ul li {
+  width: 33%;
+  height: 100%;
+  float: left;
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  line-height: 50px;
+}
+.usercon .integral ul li:first-child {
+  line-height: 120px;
+  border-width: 0 1px 0 0;
+  border-image: url('../../img/border_r.png') 1;
+}
+.usercon .integral ul li div {
+  display: block;
+  width: 111px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 3px 2px rgba(59, 62, 65, 0.32);
+  background: #ff6868;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  margin-left: 100px;
+  margin-top: 30px;
+}
+.usercon .integral ul li div:hover {
+  background: #ff3535;
+}
+.usercon .detail {
+  width: 1037px;
+  height: 551px;
+  float: left;
+  margin-top: 6px;
+  background: #fff;
+  overflow: auto;
+  box-shadow: 0 10px 8px rgba(59, 62, 65, 0.32);
+  border-radius: 0 20px 20px 0;
+}
+.usercon .detail .rule {
+  float: right;
+  line-height: 80px;
+  color: #007eff;
+  font-size: 16px;
+  margin-right: 35px;
+}
+.usercon .detail table {
+  width: 980px;
+  margin-left: 30px;
+}
+.usercon .detail table tr {
+  border-bottom: 1px solid #e1e1e1;
+}
+.usercon .detail table tr th {
+  font-size: 16px;
+  color: #ff6868;
+  height: 70px;
+  line-height: 70px;
+  border-bottom: 1px solid #e1e1e1;
+}
+.usercon .detail table tr td {
+  font-size: 16px;
+  color: #666;
+  line-height: 70px;
+  text-align: center;
+}
+.detail .page {
+  width: auto;
+  line-height: 50px;
+  overflow: hidden;
+  text-align: center;
+  margin-top: 20px;
+}
+.detail .page span {
+  display: inline-block;
+  width: 66px;
+  height: 30px;
+  margin-top: 10px;
+  line-height: 30px;
+  font-size: 20px;
+  color: #07c1dc;
+  font-weight: bold;
+  border: 1px solid #07c1dc;
+  cursor: pointer;
+}
+.detail .page a {
+  font-size: 14px;
+  color: #999;
+  font-weight: bold;
+  padding: 0 5px;
+}
+.detail .page a.current {
+  color: #07c1dc;
+}

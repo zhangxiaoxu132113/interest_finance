@@ -1,0 +1,91 @@
+<!--description 设置首页的轮播图片-->
+<style>
+    .carsousel_frame{background: #fff; padding-bottom: 1em;}
+    .carsousel_frame .carsousel_header {border-bottom: 1px dotted rgba(0, 0, 0, 0.2); padding: 1em; margin-bottom: 1em; position: relative}
+    .carsousel_frame .carsousel_header span {margin-left: 1em;}
+    .carsousel_frame .carsousel_body {padding:0 14px;}
+    .carsousel_add_btn {margin-bottom:1em;position: absolute;right: 14px;bottom:-10px;}
+    .href_text {text-decoration: underline;cursor: pointer}
+</style>
+<div class="row">
+    <!-- page heading start-->
+    <div class="page-heading">
+        <h3>
+            网站管理
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">网站管理</a>
+            </li>
+            <li class="active"> 合作机构 </li>
+        </ul>
+        <div class="state-info">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly expense</span>
+                        <h3 class="red-txt">$ 45,600</h3>
+                    </div>
+                    <div id="income" class="chart-bar"></div>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly  income</span>
+                        <h3 class="green-txt">$ 45,600</h3>
+                    </div>
+                    <div id="expense" class="chart-bar"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- page heading end-->
+
+    <div class="row" ng-controller="webParentsCtrl">
+
+        <div class="col-md-12">
+            <div class="carsousel_frame">
+                <div class="carsousel_inner">
+                    <div class="carsousel_header">
+                        <a href="#addParents" class="btn btn-success pull-right carsousel_add_btn"><i class="fa fa-plus" style="margin-right: 0.5em;"></i>添加</a>
+                        <i class="fa fa-th-list"></i><span style="font-weight: 700">合作机构列表</span>
+                    </div>
+                    <!--<h4 style="float: right">设置</h4>-->
+                    <div class="carsousel_body">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>标题</th>
+                                <th>图片</th>
+                                <th>链接</th>
+                                <th>排序</th>
+                                <th style="text-align: center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in partners">
+                                <td style="width: 5%">{{item.ID}}</td>
+                                <td style="width: 20%">{{item.DESCRIPTION}}</td>
+                                <td style="width: 20%"><img ng-src="/{{item.IMGURL}}" width="165px" height="36"></td>
+                                <td style="width: 30%"><a class="href_text">{{item.URL}}</a></td>
+                                <td style="width: 10%">{{item.SORTORDER}}</td>
+                                <td style="text-align: center">
+                                    <button class="btn btn-success">编辑</button>
+                                    <button class="btn btn-success" ng-click="removeItem($index,item)">删除</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

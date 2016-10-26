@@ -1,0 +1,80 @@
+<style>
+    .setting_frame {background: #fff; padding-bottom: 1em;}
+    .setting_frame .setting_header {border-bottom: 1px dotted rgba(0, 0, 0, 0.2); padding: 1em; margin-bottom: 1em; }
+    .setting_frame .setting_header span {margin-left: 1em;}
+    .setting_body textarea {width: 320px!important;height: 54px!important;outline: none}
+    .setting_body .info {vertical-align: top;margin-left: 1em;margin-top:1em;font-weight: 100}
+    .setting_frame .setting_footer button {margin-top:1em;}
+</style>
+<div class="row">
+    <!-- page heading start-->
+    <div class="page-heading">
+        <h3>
+            网站管理
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">网站管理</a>
+            </li>
+            <li class="active"> 网站设置 </li>
+        </ul>
+        <div class="state-info">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly expense</span>
+                        <h3 class="red-txt">$ 45,600</h3>
+                    </div>
+                    <div id="income" class="chart-bar"></div>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly  income</span>
+                        <h3 class="green-txt">$ 45,600</h3>
+                    </div>
+                    <div id="expense" class="chart-bar"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- page heading end-->
+</div>
+
+<div class="row" ng-controller="webSettingCtrl">
+
+    <div class="col-md-12">
+        <div class="setting_frame">
+            <div class="setting_inner">
+                <div class="setting_header"><i class="fa fa-th-list"></i><span style="font-weight: 700">网站设置</span></div>
+                <!--<h4 style="float: right">设置</h4>-->
+                    <div class="setting_body">
+                    <div class="row">
+                        <div class="col-md-push-1 col-md-2"><label>网站描述:</label></div>
+                        <div class="col-md-9"><textarea ng-model="webDescription"></textarea><label class="info">在网站首页的描述中显示(web_descript)</label></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-push-1 col-md-2"><label>网站关键词：</label></div>
+                        <div class="col-md-9"><textarea ng-model="webKey"></textarea><label class="info">在首页的keywords中显示(web_keywords)</label></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-push-1 col-md-2"><label>首页Title：</label></div>
+                        <div class="col-md-9"><textarea ng-model="webTitle"></textarea><label class="info">网站首页Title(web_title)</label></div>
+                    </div>
+                </div>
+                <div class="setting_footer">
+                    <div class="col-md-push-2 col-md-1 setting_footer_inner">
+                        <button class="btn btn-success col-md-push-2" type="button" ng-click="submit()">
+                            <i class="fa fa-check" style="margin-right: 1em;"></i>提交
+                        </button>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

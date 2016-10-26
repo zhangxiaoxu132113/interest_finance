@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api-params>
+    <api-param>
+        <name>phone</name>
+        <description>手机号码</description>
+    </api-param>
+    <api-param>
+        <name>invite_code</name>
+        <description>邀请码</description>
+    </api-param>
+    <api-param>
+        <name>username</name>
+        <description>用户名</description>
+    </api-param>
+
+</api-params>

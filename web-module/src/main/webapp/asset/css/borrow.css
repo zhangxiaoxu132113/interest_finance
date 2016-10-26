@@ -1,0 +1,314 @@
+.border-shadow {
+  box-shadow: 0 6px 6px rgba(59, 62, 65, 0.32);
+  border-radius: 10px;
+}
+body {
+  background: #e5e5e5;
+}
+.selectbox {
+  width: 1270px;
+  height: 215px;
+  margin: 50px auto 0 auto;
+}
+.selectbox .left {
+  width: 223px;
+  height: 215px;
+  float: left;
+  background: #07c1dc;
+  box-shadow: 0 6px 6px rgba(59, 62, 65, 0.32);
+  border-radius: 10px;
+  font-size: 18px;
+}
+.selectbox .left a {
+  display: block;
+  width: 223px;
+  margin-top: 38px;
+  line-height: 55px;
+  text-align: center;
+  color: #fff;
+}
+.selectbox .left a.active {
+  background: #09afc7;
+}
+.selectbox .right {
+  width: 1029px;
+  height: 215px;
+  float: right;
+  background: #07c1dc;
+  box-shadow: 0 6px 6px rgba(59, 62, 65, 0.32);
+  border-radius: 10px;
+  color: #fff;
+  padding: 20px 0 0 54px;
+}
+.selectbox .right li {
+  line-height: 45px;
+}
+.selectbox .right li span {
+  display: inline-block;
+  margin-right: 14px;
+  font-size: 16px;
+}
+.selectbox .right li span i {
+  display: inline-block;
+  width: 20px;
+  height: 45px;
+  margin-right: 14px;
+  float: left;
+  background: url('../image/borrow_icon.png') no-repeat;
+}
+.selectbox .right li span i.bg {
+  background-position: 0 15px;
+}
+.selectbox .right li span i.proj {
+  background-position: -20px 15px;
+}
+.selectbox .right li span i.cycle {
+  background-position: -63px 15px;
+}
+.selectbox .right li span i.cycle {
+  background-position: -63px 15px;
+}
+.selectbox .right li span i.start {
+  background-position: -41px 15px;
+}
+.selectbox .right li em {
+  margin-left: 20px;
+  text-align: center;
+  padding: 7px 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.selectbox .right li em.active {
+  background: #09afc7;
+  border-radius: 5px;
+}
+.listbox {
+  width: 1270px;
+  height: auto;
+  margin: 20px auto 0 auto;
+  background: #fff;
+  box-shadow: 0 6px 6px rgba(59, 62, 65, 0.32);
+  border-radius: 10px;
+}
+.listbox .head {
+  position: relative;
+  width: 1270px;
+  height: 70px;
+  line-height: 70px;
+}
+.listbox .head .line {
+  position: absolute;
+  top: 34px;
+  width: 1270px;
+  height: 1px;
+  background: #d6d6d6;
+}
+.listbox .head .item {
+  position: absolute;
+  right: 203px;
+  width: 670px;
+  height: 70px;
+  z-index: 1;
+  background: #fff;
+}
+.listbox .head .item li {
+  position: relative;
+  float: left;
+  color: #999;
+  text-align: center;
+  cursor: pointer;
+}
+.listbox .head .item li.act {
+  width: 130px;
+  margin-right: 20px;
+  cursor: inherit;
+}
+.listbox .head .item li.total {
+  width: 130px;
+  margin-right: 20px;
+}
+.listbox .head .item li.cycle {
+  width: 80px;
+}
+.listbox .head .item li.rate,
+.listbox .head .item li.add,
+.listbox .head .item li.trate {
+  width: 90px;
+}
+.listbox .head .item li i {
+  position: absolute;
+  display: inline-block;
+  width: 10px;
+  height: 70px;
+  background: url('../image/borrow_icon.png') -88px 25px no-repeat;
+}
+.listbox .head .item li i.up {
+  background-position: -114px 25px;
+}
+.listbox .head .item li i.down {
+  background-position: -102px 25px;
+}
+.listbox .borrowlist {
+  width: 1270px;
+  padding: 0 70px;
+}
+.listbox .borrowlist li {
+  margin-top: 20px;
+  height: 80px;
+}
+.listbox .borrowlist li .left {
+  width: 150px;
+  float: left;
+}
+.listbox .borrowlist li .left span {
+  display: block;
+  width: 96px;
+  height: 36px;
+  margin-top: 22px;
+  line-height: 36px;
+  border: 1px dashed #d2d2d2;
+  color: #07c1dc;
+  text-align: center;
+}
+.listbox .borrowlist li .right {
+  float: left;
+  width: 830px;
+  height: 80px;
+  border-bottom: 1px dashed #d2d2d2;
+}
+.listbox .borrowlist li .right span {
+  display: inline-block;
+  float: left;
+  height: 80px;
+}
+.listbox .borrowlist li .right span.logo {
+  width: 110px;
+  display: table;
+  text-align: center;
+}
+.listbox .borrowlist li .right span.logo em {
+  display: table-cell;
+  vertical-align: middle;
+}
+.listbox .borrowlist li .right span.act {
+  width: 160px;
+  margin-left: 50px;
+  display: table;
+  text-align: center;
+}
+.listbox .borrowlist li .right span.act em {
+  display: table-cell;
+  vertical-align: middle;
+}
+.listbox .borrowlist li .right span.total {
+  width: 130px;
+  margin-left: 10px;
+  line-height: 80px;
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+}
+.listbox .borrowlist li .right span.cycle {
+  width: 80px;
+  margin-left: 18px;
+  line-height: 76px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+.listbox .borrowlist li .right span.rate {
+  width: 90px;
+  font-size: 14px;
+  color: #ff6868;
+  text-align: center;
+}
+.listbox .borrowlist li .right span.rate strong {
+  display: block;
+  height: 26px;
+  line-height: 26px;
+  margin-top: 25px;
+  background: #f3f3f3;
+}
+.listbox .borrowlist li .right span.add {
+  width: 90px;
+  font-size: 14px;
+  color: #ff9000;
+  text-align: center;
+}
+.listbox .borrowlist li .right span.add strong {
+  display: block;
+  height: 26px;
+  line-height: 26px;
+  margin-top: 25px;
+  background: #f3f3f3;
+}
+.listbox .borrowlist li .right span.trate {
+  width: 92px;
+  font-size: 14px;
+  color: #ff9000;
+  text-align: center;
+  line-height: 70px;
+}
+.listbox .borrowlist li .btn {
+  width: 138px;
+  height: 80px;
+  float: right;
+  text-align: center;
+}
+.listbox .borrowlist li .btn a {
+  display: block;
+  margin-top: 20px;
+  width: 138px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 3px 2px rgba(59, 62, 65, 0.32);
+  background: #07c1dc;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.listbox .borrowlist li .btn a:hover {
+  background: #00a6d0;
+}
+.listbox .borrowlist li .btn span {
+  font-size: 12px;
+  color: #999;
+  line-height: 30px;
+}
+.listbox .page {
+  width: 1270px;
+  line-height: 50px;
+  overflow: hidden;
+  text-align: center;
+  margin-top: 20px;
+}
+.listbox .page span {
+  display: inline-block;
+  width: 66px;
+  height: 30px;
+  margin-top: 10px;
+  line-height: 30px;
+  font-size: 20px;
+  color: #07c1dc;
+  font-weight: bold;
+  border: 1px solid #07c1dc;
+  cursor: pointer;
+}
+.listbox .page a {
+  font-size: 14px;
+  color: #999;
+  font-weight: bold;
+  padding: 0 5px;
+}
+.listbox .page a.current {
+  color: #07c1dc;
+}

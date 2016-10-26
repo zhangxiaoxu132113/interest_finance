@@ -1,0 +1,97 @@
+<!--description 更新合作伙伴信息-->
+<style>
+    .carsousel_frame{background: #fff; padding-bottom: 1em;}
+    .carsousel_frame .carsousel_header {border-bottom: 1px dotted rgba(0, 0, 0, 0.2); padding: 1em; margin-bottom: 1em; position: relative}
+    .carsousel_frame .carsousel_header span {margin-left: 1em;}
+    .carsousel_frame .carsousel_body {padding:0 14px;}
+    .carsousel_frame .carsousel_body .input_text{height: 34px;border:1px #e5e5e5 solid;padding-left: 0.5em;}
+    .carsousel_frame .carsousel_body .row {margin-bottom: 1em;}
+    .carsousel_add_btn {margin-bottom:1em;position: absolute;right: 14px;bottom:-10px;}
+    .href_text {text-decoration: underline;cursor: pointer}
+
+</style>
+<div class="row">
+    <!-- page heading start-->
+    <div class="page-heading">
+        <h3>
+            网站管理
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">网站管理</a>
+            </li>
+            <li class="active"> 更新友情链接 </li>
+        </ul>
+        <div class="state-info">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly expense</span>
+                        <h3 class="red-txt">$ 45,600</h3>
+                    </div>
+                    <div id="income" class="chart-bar"></div>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="summary">
+                        <span>yearly  income</span>
+                        <h3 class="green-txt">$ 45,600</h3>
+                    </div>
+                    <div id="expense" class="chart-bar"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- page heading end-->
+
+    <div class="row" ng-controller="webLinksCtrl">
+
+        <div class="col-md-12">
+            <div class="carsousel_frame">
+                <div class="carsousel_inner">
+                    <div class="carsousel_header">
+                        <!--<a href="#addCarouselImg" class="btn btn-success pull-right carsousel_add_btn"><i class="fa fa-plus" style="margin-right: 0.5em;"></i>添加图片</a>-->
+                        <i class="fa fa-th-list"></i><span style="font-weight: 700">友情链接设置</span>
+                    </div>
+                    <!--<h4 style="float: right">设置</h4>-->
+                    <div class="carsousel_body">
+                        <!-- 隐藏域内容 -->
+                        <!-- ID -->
+                        <input type="text" ng-model="newPlatform.id" style="display: none" name="platformId"/>
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>名称:</label></div>
+                            <div class="col-md-9">
+                                <input class="input_text" ng-model="newLinkName" type="text" placeholder="名称"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>链接地址：</label></div>
+                            <div class="col-md-9">
+                                <input type="text" ng-model="newLinkUrl" class="input_text"style="width: 400px;" name="carsouel_img" placeholder="链接地址" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-push-1 col-md-2"><label>排序:</label></div>
+                            <div class="col-md-9">
+                                <input class="input_text" ng-model="newSortBy" type="text" style="width: 220px;" placeholder="排序值"/>
+                            </div>
+                        </div>
+                        <div class="carsousel_footer">
+                            <div class="col-md-push-2 col-md-6 setting_footer_inner">
+                                <button class="btn btn-success" type="button" ng-click="updateLink()"><i class="fa fa-check" style="margin-right: 0.5em;"></i>更新</button>
+                                <a class="btn btn-success" style="margin-left: 1em;" href="javascript:history.go(-1);"><i class="fa fa-mail-reply" style="margin-right: 0.5em;"></i>返回</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
